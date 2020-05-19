@@ -1,0 +1,13 @@
+.search {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #a52a2a;
+}
+.search input {
+  width: 40%;
+  border-radius: 10px;
+  height: 40px;
+  border: #fff;
+}
