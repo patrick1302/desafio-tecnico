@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, memo } from "react";
 import CartContext from "../../context/cartContext";
 import { GrCart } from "react-icons/gr";
 import { TiDelete } from "react-icons/ti";
@@ -72,4 +72,4 @@ function Cart({ cart }) {
     </div>
   );
 }
-export default Cart;
+export default memo(Cart);

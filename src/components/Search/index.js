@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import "./style.css";
 
@@ -15,4 +15,4 @@ const Search = ({ setSearch }) => {
   );
 };
 
-export default Search;
+export default memo(Search);

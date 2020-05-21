@@ -15,7 +15,7 @@ const Card = ({
   secondUrl,
 }) => {
   useEffect(() => {
-    async function fetchPokemon(aaa) {
+    async function fetchPokemon() {
       try {
         const pokemonTypeOne = await api.get(firstUrl);
         const pokemonTypeTwo = await api.get(secondUrl);
