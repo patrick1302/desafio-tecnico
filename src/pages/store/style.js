@@ -24,7 +24,9 @@ export const Menu = styled.div`
   justify-content: space-evenly;
 
   @media (max-width: 750px) {
-    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 50px 0 50px 0;
   }
 `;
 
@@ -36,6 +38,10 @@ export const Button = styled.button`
   background: #f0f0f5;
   :hover {
     background: #a52a2a;
+  }
+  @media (max-width: 750px) {
+    width: 100%;
+    margin-bottom: 10px;
   }
 `;
 

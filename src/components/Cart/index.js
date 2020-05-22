@@ -1,5 +1,5 @@
-import React, { useState, useContext, memo } from "react";
-import CartContext from "../../context/cartContext";
+import React, { useState, useEffect, memo } from "react";
+
 import { GrCart } from "react-icons/gr";
 import { TiDelete } from "react-icons/ti";
 
@@ -7,13 +7,17 @@ import "./style.css";
 
 import Modal from "../../components/Modal";
 
-function Cart({ cart }) {
+function Cart({ cart, setCart }) {
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const getSummaryCart = localStorage.getItem("compras");
+    const parse = JSON.parse(getSummaryCart) ? JSON.parse(getSummaryCart) : [];
+    setCart(parse);
+  }, []);
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
-
-  const setCart = useContext(CartContext);
 
   const checkout = () => {
     if (cart.length > 0) {

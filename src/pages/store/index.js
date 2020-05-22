@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -13,18 +13,10 @@ import Cart from "../../components/Cart";
 import Card from "../../components/Card";
 import Search from "../../components/Search";
 
-import CartContext from "../../context/cartContext";
-
 function Store() {
   const [pokemon, setPokemon] = useState([]);
   const [search, setSearch] = useState("");
   const [cart, setCart] = useState([]);
-
-  useEffect(() => {
-    const getSummaryCart = localStorage.getItem("compras");
-    const parse = JSON.parse(getSummaryCart) ? JSON.parse(getSummaryCart) : [];
-    setCart(parse);
-  }, []);
 
   const filteredPokemon = pokemon.filter((pokemon) =>
     pokemon.pokemon.name.toLowerCase().includes(search.toLowerCase())
@@ -82,9 +74,7 @@ function Store() {
                 </Route>
               </ProductCard>
             </Product>
-            <CartContext.Provider value={setCart}>
-              <Cart cart={cart} />
-            </CartContext.Provider>
+            <Cart cart={cart} setCart={setCart} />
           </Container>
         </Main>
       </Switch>
