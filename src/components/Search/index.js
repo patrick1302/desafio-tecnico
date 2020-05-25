@@ -1,8 +1,12 @@
-import React, { memo } from "react";
+import React, { memo, useContext } from "react";
 
 import "./style.css";
 
-const Search = ({ setSearch }) => {
+import { SearchContext } from "../../context/SearchContext";
+
+const Search = () => {
+  const { setSearch } = useContext(SearchContext);
+
   return (
     <div className="search">
       <input

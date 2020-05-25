@@ -1,4 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+
+import { CartContext } from "../../context/CartContext";
+import { SearchContext } from "../../context/SearchContext";
 
 import "./style.css";
 
@@ -6,14 +9,12 @@ import api from "../../services/api";
 
 import PokemonImg from "../../assets/Pokemon.png";
 
-const Card = ({
-  filteredPokemon,
-  cart,
-  setCart,
-  setPokemon,
-  firstUrl,
-  secondUrl,
-}) => {
+const Card = ({ firstUrl, secondUrl }) => {
+  const [pokemon, setPokemon] = useState([]);
+
+  const { cart, setCart } = useContext(CartContext);
+  const { search } = useContext(SearchContext);
+
   useEffect(() => {
     async function fetchPokemon() {
       try {
@@ -37,6 +38,11 @@ const Card = ({
     }
     fetchPokemon();
   }, []);
+
+  // search pokemon by name
+  const filteredPokemon = pokemon.filter((pokemon) =>
+    pokemon.pokemon.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   const addPokemonToCart = (image, name, price) => {
     const getSummaryCart = localStorage.getItem("compras");

@@ -1,4 +1,6 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useState, useEffect, memo, useContext } from "react";
+
+import { CartContext } from "../../context/CartContext";
 
 import { GrCart } from "react-icons/gr";
 import { TiDelete } from "react-icons/ti";
@@ -7,8 +9,9 @@ import "./style.css";
 
 import Modal from "../../components/Modal";
 
-function Cart({ cart, setCart }) {
+function Cart() {
   const [showModal, setShowModal] = useState(false);
+  const { cart, setCart } = useContext(CartContext);
 
   useEffect(() => {
     const getSummaryCart = localStorage.getItem("compras");
